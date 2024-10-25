@@ -15,18 +15,15 @@ type User struct {
 }
 
 func (u *User) ValidateCredentials() error {
-	query := "SELECT id, password FROM users WHERE login = ?"
+	query := "SELECT id, password, isAdmin FROM users WHERE login = ?"
 	row := db.DB.QueryRow(query, u.Login)
 
 	var retrievedPassword string
 	var isAdmin bool
 	err := row.Scan(&u.ID, &retrievedPassword, &isAdmin)
+	u.IsAdmin = isAdmin
 
 	if err != nil {
-		return errors.New("credentials invalid")
-	}
-
-	if u.IsAdmin != isAdmin {
 		return errors.New("credentials invalid")
 	}
 
@@ -39,7 +36,7 @@ func (u *User) ValidateCredentials() error {
 }
 
 func (u *User) Save() error {
-	query := "INSERT INTO users(login, password) VALUES (?, ?)"
+	query := "INSERT INTO users(login, password, isAdmin) VALUES (?, ?, ?)"
 
 	stmt, err := db.DB.Prepare(query)
 
@@ -54,7 +51,7 @@ func (u *User) Save() error {
 		return err
 	}
 
-	result, err := stmt.Exec(u.Login, hashedPassword)
+	result, err := stmt.Exec(u.Login, hashedPassword, u.IsAdmin)
 	if err != nil {
 		return err
 	}

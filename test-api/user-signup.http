@@ -3,5 +3,6 @@ content-type: application/json
 
 {
     "login": "testuser232",
-    "password": "tesert"
+    "password": "tesert",
+    "isAdmin": false
 }
