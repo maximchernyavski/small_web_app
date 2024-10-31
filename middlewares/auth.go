@@ -8,7 +8,7 @@ import (
 )
 
 func Authenticate(context *gin.Context) {
-	token := context.Request.Header.Get("Authorization")
+	token := context.Request.Header.Get("token")
 	if token == "" {
 		context.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"message": "Not authorized."})
 		return
@@ -23,5 +23,6 @@ func Authenticate(context *gin.Context) {
 
 	context.Set("userId", userId)
 	context.Set("isAdmin", isAdmin)
+	context.JSON(http.StatusOK, gin.H{"message": "OK"})
 	context.Next()
 }

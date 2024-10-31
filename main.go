@@ -16,7 +16,7 @@ func main() {
 	server.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"http://localhost:3000"},
 		AllowMethods:     []string{"POST", "GET", "OPTIONS", "PUT"},
-		AllowHeaders:     []string{"Origin", "Content-Type"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "token"},
 		ExposeHeaders:    []string{"Content-Type"},
 		AllowCredentials: true,
 		AllowOriginFunc: func(origin string) bool {
