@@ -39,7 +39,7 @@ func createTables() {
 	}
 
 	createPostsTable := `
-	CREATE TABLE IF NOT EXISTS events (
+	CREATE TABLE IF NOT EXISTS posts (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		title TEXT NOT NULL,
 		text TEXT NOT NULL,
@@ -51,6 +51,6 @@ func createTables() {
 	_, err = DB.Exec(createPostsTable)
 
 	if err != nil {
-		panic("Could not create events table.")
+		panic("Could not create posts table.")
 	}
 }

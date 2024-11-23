@@ -6,3 +6,9 @@ content-type: application/json
     "password": "tesert",
     "isAdmin": false
 }
+
+# {
+#     "login": "testuser1mailcom",
+#     "password": "test",
+#     "isAdmin": true
+# }

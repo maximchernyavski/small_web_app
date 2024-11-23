@@ -6,9 +6,9 @@ import (
 )
 
 func RegisterRoutes(server *gin.Engine) {
-	authenticated := server.Group("/")
+	// authenticated := server.Group("/")
 
-	authenticated.Use(middlewares.Authenticate)
+	// authenticated.Use(middlewares.Authenticate)
 
 	server.POST("/auth", auth)
 	server.POST("/verify", middlewares.Verify)
