@@ -1,0 +1,3 @@
+[submodule "small_web_app_client"]
+	path = small_web_app_client
+	url = https://github.com/maximchernyavski/small_web_app_client.git
